@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgb(157, 214, 250);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .formPage {
+            margin: 3rem auto;
+            width: min(80%, 45rem);
+            border-radius: 12px;
+            background-color: white;
+        }
+
+        .heading {
+            padding: 1rem 0px;
+            color: white;
+            background-color: rgb(0, 0, 136);
+            overflow: hidden;
+            border-radius: 12px 12px 0px 0px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+        }
+
+        .form {
+            padding: 2rem;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 1em;
+            font-weight: 700;
+            margin-block: 12px;
+        }
+
+        .inputStyle {
+            width: 100%;
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        textarea {
+            resize: none;
+            padding: 1em;
+        }
+
+        input[type=radio],
+        select {
+            cursor: pointer;
+        }
+
+        button {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: .4rem 1rem;
+            color: white;
+            background-color: rgb(0, 0, 136);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all .4s;
+            border: none;
+        }
+
+        button:hover {
+            background-color: rgb(25, 25, 181);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="formPage">
+        <div class="heading">
+            <h1>Ticket Booking Form</h1>
+        </div>
+
+        <div class="form">
+            <label for="PersonName">Name:</label>
+            <input type="text" class="inputStyle" name="PersonName" id="PersonName" placeholder="Enter Name.....">
+
+            <label for="Email">Email</label>
+            <input type="email" class="inputStyle" name="Email" id="Email" placeholder="Enter Email.....">
+
+            <label for="PhoneNumber">Phone Number</label>
+            <input type="tel" class="inputStyle" name="PhoneNumber" id="PhoneNumber"
+                placeholder="Enter Mobile Number....">
+
+            <label for="Location">Location</label>
+            <select class="inputStyle" name="Location" id="Location">
+                <option value="Lahore">Lahore</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="DG Khan">DG Khan</option>
+                <option value="Sakhar">Sakhar</option>
+                <option value="Multan">Multan</option>
+                <option value="Sialkoat">Sialkoat</option>
+                <option value="DI Khan">DI Khan</option>
+                <option value="Sibbi">Sibbi</option>
+                <option value="Murree">Murree</option>
+                <option value="Kohat">Kohat</option>
+                <option value="Lodhran">Lodhran</option>
+            </select>
+
+            <label for="Class">Class:</label>
+            <div>
+                <label for="FirstClass">
+                    <input type="radio" value="First Class" name="Class" id="FirstClass">
+                    First Class</label>
+
+                <label for="SecondClass">
+                    <input type="radio" value="Second Class" name="Class" id="SecondClass">
+                    Second Class</label>
+
+                <label for="ThirdClass">
+                    <input type="radio" value="Third Class" name="Class" id="ThirdClass">
+                    Third Class</label>
+            </div>
+
+            <label for="Time">Time Of Departure</label>
+            <select class="inputStyle" name="Time" id="Time">
+                <option value="Morning">Morning</option>
+                <option value="AfterNoon">AfterNoon</option>
+                <option value="Evening">Evening</option>
+                <option value="MidNight">Mid Night</option>
+            </select>
+
+            <label for="Desc">Any Massage?</label>
+            <textarea class="inputStyle" name="Desc" rows="5" id="Desc">
+            </textarea>
+
+            <button class="Submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        
+        class TrainForm {
+            constructor(Name, Email, Phone, Location, Time, Class, Massage) {
+                this.name = Name;
+                this.email = Email;
+                this.phone = Phone;
+                this.location = Location;
+                this.class = Class;
+                this.Massage = Massage;
+            }
+
+            showName() {
+                console.log(`Congratulations ${this.name}! Your Seat Has Been Reserved.`);
+            }
+
+        }
+
+
+        const PersonName = document.getElementById("PersonName");
+        const PersonEmail = document.getElementById("Email");
+        const PersonPhoneNumber = document.getElementById("PhoneNumber");
+        const DepartureLocation = document.getElementById("Location");
+        const DepartureTime = document.getElementById("Time");
+        const TrainClass = document.querySelectorAll("input[type= radio]");
+        const PersonMassage = document.getElementById("Desc");
+
+        const allInputs = document.querySelectorAll("input")
+
+        const SubmitButton = document.querySelector("button");
+
+        SubmitButton.addEventListener('click', () => {
+
+            const P1 = new TrainForm(PersonName.value, PersonEmail.value, PersonPhoneNumber.value, DepartureLocation.value, DepartureTime.value, TrainClass.value, PersonMassage.value);
+            P1.showName();
+
+
+
+            allInputs.forEach(input => {
+                input.value = "";
+            });
+        });
+
+    </script>
+</body>
+
+</html>
